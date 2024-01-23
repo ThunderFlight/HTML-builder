@@ -4,10 +4,12 @@ const fs = require('fs');
 
 async function take() {
   const dirCreation = await mkdir('copy', { recursive: true });
-  const files = await promise.readdir('./files/');
+  const files = await promise.readdir('./04-copy-directory/files/');
   for (const file of files) {
-    const readStream = fs.createReadStream(`./files/${file}`);
-    const writeStream = fs.createWriteStream(`./copy/${file}`);
+    const readStream = fs.createReadStream(`./04-copy-directory/files/${file}`);
+    const writeStream = fs.createWriteStream(
+      `./04-copy-directory/copy/${file}`,
+    );
     readStream.on('data', (chunk) => {
       writeStream.write(chunk.toString());
     });
