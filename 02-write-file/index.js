@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('node:readline');
 const { stdin: input, stdout: output } = require('node:process');
 const rl = readline.createInterface({ input, output });
-fs.open('myfile', 'wx', (err, fd) => {
+fs.open('./02-write-file/myfile.txt', 'wx', (err, fd) => {
   if (err) {
     if (err.code === 'EEXIST') {
       return;
@@ -16,7 +16,7 @@ fs.open('myfile', 'wx', (err, fd) => {
   });
 });
 
-const streamWrite = fs.createWriteStream('myfile.txt');
+const streamWrite = fs.createWriteStream('./02-write-file/myfile.txt');
 
 rl.on('SIGINT', () => {
   console.log('see you later :)');

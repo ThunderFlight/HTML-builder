@@ -1,6 +1,8 @@
 const fs = require('fs');
 const promise = require('node:fs/promises');
-const distDir = promise.mkdir('project-dist', { recursive: true });
+const distDir = promise.mkdir('./06-build-page/project-dist', {
+  recursive: true,
+});
 
 const bundleCss = fs.createWriteStream(
   './06-build-page/project-dist/styles.css',
