@@ -51,10 +51,11 @@ async function getAssets(linkDir = './06-build-page/assets/') {
       );
     }
     if (extension.split('').includes('.')) {
+      console.log(linkDir + file);
       const stream = fs.createWriteStream(
-        `${linkDir.slice(2, linkDir.length)}${file}`,
+        `${linkDir.replace('assets', 'project-dist/assets')}${file}`,
       );
-      const readStream = fs.createReadStream(linkDir + file);
+      const readStream = fs.createReadStream(`${linkDir}${file}`);
       readStream.on('data', (chunk) => {
         stream.write(chunk.toString());
       });
